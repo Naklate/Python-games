@@ -41,7 +41,7 @@ class Fighter():
        self.animation_list = []
        self.frame_index = 0
        for i in range(8):
-           img = pygame.image.load(f'img{self.name}/Idle/{i}.png')
+           img = pygame.image.load(f'img/{self.name}/Idle/{i}.png')
            img = pygame.transform.scale(img, (img.getwidth() * 3, img.get_height() * 3))
            self.animation_list.append(img)
        #img = pygame.image.load(f'img/{self.name}/Idle/0.png')
