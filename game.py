@@ -40,15 +40,29 @@ class Fighter():
        self.alive = True
        self.animation_list = []
        self.frame_index = 0
+       self.update_time = pygame.time.get_ticks()
        for i in range(8):
            img = pygame.image.load(f'img/{self.name}/Idle/{i}.png')
-           img = pygame.transform.scale(img, (img.getwidth() * 3, img.get_height() * 3))
+           img = pygame.transform.scale(img, (img.get_width() * 3, img.get_height() * 3))
            self.animation_list.append(img)
-       #img = pygame.image.load(f'img/{self.name}/Idle/0.png')
-       #self.image = pygame.transform.scale(img, (img.get_width() * 3, img.get_height() *3))
        self.image = self.animation_list[self.frame_index]
        self.rect = self.image.get_rect()
        self.rect.center = (x, y)
+
+    def update(self):
+        animation_cooldown = 100
+        #handle animation
+        #update image
+        self.image = self.animation_list[self.frame_index]
+        #check if enough time has passed since the last update
+        if pygame.time.get_ticks() - self.update_time > animation_cooldown:
+            self.update_time = pygame.time.get_ticks()
+            self.frame_index +=1
+        #if the animation has run out reset back to the start
+        if self.frame_index >= len(self.animation_list):
+            self.frame_index = 0
+            
+             
 
     def draw(self):
         screen.blit(self.image, self.rect)
@@ -76,8 +90,10 @@ while run:
     draw_panel()
 
     #draw fighters
+    knight.update()
     knight.draw()
     for bandit in bandit_list:
+        bandit.update()
         bandit.draw()
 
 
