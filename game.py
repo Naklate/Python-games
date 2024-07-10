@@ -15,7 +15,8 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Battle')
 
 #load images
-#background image
+#background image TEST
+
 background_img = pygame.image.load('img/Background/background.png').convert_alpha()
 #panel image
 panel_img = pygame.image.load('img/Icons/panel.png').convert_alpha()
@@ -24,7 +25,7 @@ panel_img = pygame.image.load('img/Icons/panel.png').convert_alpha()
 def draw_bg():
     screen.blit(background_img, (0, 0))
 
-#function for drawing panel
+#function for drawing panel TEST
 def draw_panel():
     screen.blit(panel_img, (0, screen_height - bottom_panel))
 
