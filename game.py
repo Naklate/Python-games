@@ -21,6 +21,11 @@ background_img = pygame.image.load('img/Background/background.png').convert_alph
 #panel image
 panel_img = pygame.image.load('img/Icons/panel.png').convert_alpha()
 
+#function for drawing text
+def draw_text(text, font, text_col, x, y):
+    img = font.render(text, True, text_col)
+    screen.blit(img, x, y)
+
 #function for drawing background
 def draw_bg():
     screen.blit(background_img, (0, 0))
